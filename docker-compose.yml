@@ -1,0 +1,16 @@
+version: "2"
+services:
+  plant-manager-api:
+    extends:
+      file: plant-manager-api/docker-compose.yml
+      service: plant-manager-api 
+  plant-manager-webapp:
+    extends:
+      file: plant-manager-webapp/docker-compose.yml
+      service: plant-manager-webapp
+    depends_on:
+      - plant-manager-api
+networks:
+  default:
+    external:
+      name: plant_manager_network
